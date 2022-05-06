@@ -127,5 +127,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #encuentra la ruta base de los archivos media
 MEDIA_URL = '/media/' # redirecciona a nuestra raiz
+STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = reverse_lazy('index')

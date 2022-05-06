@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Turnos{% endblock titulo %}</title>
+</head>
+<body>
+    {% block cuerpo %}
+    <h1>Templade de turnos</h1>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Numero de turno</th>
+                <th>Hora de cracion del turno</th>
+                <th>Estado</th>
+                <th>Usuario</th>
+                <th>Staff</th>
+                <th>OPCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for turn in turn %}
+            <tr>
+                <td>{{ turn.id }}</td>
+                <td>{{ turn.nturno }}</td>
+                <td>{{ turn.hora_creacion }}</td>
+                <td>{{ turn.estado }}</td>
+                <td>{{ turn.usuario }}</td>
+                <td>{{ turn.usuarioStaff }}</td>            
+                <td><a href="{% url 'editar_user' persona.id %}">EDITAR</a> <a href="{% url 'eliminar_user' persona.id %}">ELIMINAR</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>       
+    </table>
+    <button><a href="{% url 'crear_turno' %}">Crear</a></button>
+    {% endblock cuerpo %}
+</body>
+</html>

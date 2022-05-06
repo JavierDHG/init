@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .models import Usuarios
-from .forms import UsuarioForm
+from .models import Usuarios,Turnos
+from .forms import UsuarioForm,TurnosForm
 
 # Create your views here.
 def datos(request):
@@ -48,3 +48,26 @@ def  eliminarUser(reques,id):
     usuario = Usuarios.objects.get(id = id)
     usuario.delete()
     return redirect('index')
+
+def turno(request):
+    turn = Turnos.objects.all()
+    contexto ={
+        "turn": turn
+    }
+    return render(request, 'turno.html', contexto)
+
+def crearTurno(request):
+    if request.method == 'GET':
+        form = TurnosForm()
+        contexto = {
+            'form':form
+        }
+    else:
+        form = TurnosForm(request.POST)
+        contexto = {
+            'form':form
+        }
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request,'crearTurno.html',contexto)
