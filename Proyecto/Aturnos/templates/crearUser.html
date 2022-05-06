@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+{% block titulo %}Crear Usuarios{% endblock titulo %}
+{% block cuerpo %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}  <!-- Permitir recibir la info del navegador -->
+    {{ form.as_p }}
+    <button type="submit">Crear o Editar</button>
+</form>
+
+{% endblock cuerpo %}
