@@ -18,17 +18,19 @@ from django.urls import path
 from django.conf import settings
 from django.contrib.auth.views import LoginView
 from django.conf.urls.static import static
-from apps.turnos.views import datos,crearUser,editarUser,eliminarUser,turno,crearTurno
+from apps.turnos.views import datos,crearUser,editarUser,eliminarUser,turno,crearTurno,eliminarTurno,editarTurno
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',turno,name='turno'),
+    path('login/', LoginView.as_view(template_name='login.html'), name="login"),
+    path('turno/',turno,name='turno'),
     path('',datos,name='index'),
     path('crearUser/',crearUser,name='crear_user'),
     path('crearTurno/',crearTurno,name='crear_turno'),
     path('editarUser/<int:id>/',editarUser, name = 'editar_user'),
-    path('eliminarUser/<int:id>/',eliminarUser, name = 'eliminar_user'),
-    path('', LoginView.as_view(template_name='login.html'), name="login")
+    path('eliminarUser/<int:id>/',eliminarUser, name = 'eliminar_user'),  
+    path('eliminarTurno/<int:id>/',eliminarTurno, name = 'eliminar_turno'),  
+    path('editarTurno/<int:id>/',editarTurno, name = 'editar_turno'),  
 ]
-urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) # Para poder mostrar la imagen

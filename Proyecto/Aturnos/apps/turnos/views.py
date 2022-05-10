@@ -69,5 +69,28 @@ def crearTurno(request):
         }
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('turno')
     return render(request,'crearTurno.html',contexto)
+
+def editarTurno(request,id):
+    turn = Turnos.objects.get(id = id)
+    if request.method == 'GET':
+        form = TurnosForm(instance = turn)
+        contexto = {
+            'form':form
+        }
+    else:
+        form = TurnosForm(request.POST, instance = turn)
+        contexto = {
+            'form':form
+        }
+        if form.is_valid():
+            form.save()
+            return redirect('turno')
+
+    return render(request,'crearUser.html',contexto)
+
+def  eliminarTurno(reques,id):
+    turn = Turnos.objects.get(id = id)
+    turn.delete()
+    return redirect('turno')
