@@ -16,20 +16,22 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
                 <th scope="col">Celuar</th>
+                <th scope="col">Cedula</th>
                 <th scope="col">Staff</th>
                 <th scope="col">Foto</th>
                 <th scope="col">OPCIONES</th>
             </tr>
         </thead>
         <tbody>
-            {% for persona in persona %}
+            {% for person in person %}
             <tr>
-                <td>{{ persona.nombres }}</td>
-                <td>{{ persona.apellidos }}</td>
-                <td>{{ persona.celular }}</td>
-                <td>{{ persona.staff }}</td>
-                <td><img src="{{persona.foto.url}}"  width="30%"></td>              
-                <td><a href="{% url 'editar_user' persona.id %}">EDITAR</a> <a href="{% url 'eliminar_user' persona.id %}">ELIMINAR</a></td>
+                <td>{{ person.name }}</td>
+                <td>{{ person.last_name }}</td>
+                <td>{{ person.cell_phone_number }}</td>
+                <td>{{ person.dni }}</td>
+                <td>{{ person.staff }}</td>
+                <td><img src="{{person.photo.url}}"  width="30%"></td>              
+                <td><a href="{% url 'editar_user' person.id %}">EDITAR</a> <a href="{% url 'eliminar_user' person.id %}">ELIMINAR</a></td>
             </tr>
             {% endfor %}
         </tbody>       

@@ -24,11 +24,11 @@
         <tbody>
             {% for turn in turn %}
             <tr>
-                <td>{{ turn.nturno }}</td>
-                <td>{{ turn.hora_creacion }}</td>
-                <td>{{ turn.estado }}</td>
-                <td>{{ turn.usuario }}</td>
-                <td>{{ turn.usuarioStaff }}</td>   
+                <td>{{ turn.turns }}</td>
+                <td>{{ turn.time }}</td>
+                <td>{{ turn.state }}</td>
+                <td>{{ turn.user }}</td>
+                <td>{{ turn.Staff }}</td>   
                 <td><a href="{% url 'editar_turno' turn.id %}">EDITAR</a> <a href="{% url 'eliminar_turno' turn.id %}">ELIMINAR</a></td>         
             </tr>
             {% endfor %}

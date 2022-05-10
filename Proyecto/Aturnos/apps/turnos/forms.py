@@ -2,14 +2,9 @@ from calendar import monthcalendar
 from dataclasses import field
 from pyexpat import model
 from django import forms
-from .models import Usuarios,Turnos
+from .models import Turns
 
-class UsuarioForm(forms.ModelForm):
+class TurnsForm(forms.ModelForm):
     class Meta:
-        model = Usuarios
-        fields ='__all__'
-
-class TurnosForm(forms.ModelForm):
-    class Meta:
-        model = Turnos
+        model = Turns
         fields = '__all__'

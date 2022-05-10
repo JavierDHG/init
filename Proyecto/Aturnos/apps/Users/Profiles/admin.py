@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Turns
+from .models import Users
 
 # Register your models here.
-
-admin.site.register(Turns)
+admin.site.register(Users)

@@ -1,69 +1,24 @@
 from django.shortcuts import render,redirect
-from .models import Usuarios,Turnos
-from .forms import UsuarioForm,TurnosForm
+from .models import Turns
+from .forms import TurnsForm
 
 # Create your views here.
-def datos(request):
-    persona =Usuarios.objects.all()
-    contexto={
-        'persona':persona
-    }
-    return render (request, 'index.html',contexto)
 
-def crearUser(request):
-    if request.method == 'GET':
-        form = UsuarioForm()
-        contexto = {
-            'form':form
-        }
-    else:
-        form = UsuarioForm(request.POST, request.FILES)
-        contexto = {
-            'form':form
-        }
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    return render(request,'crearUser.html',contexto)
-
-def editarUser(request,id):
-    usuario = Usuarios.objects.get(id = id)
-    if request.method == 'GET':
-        form = UsuarioForm(instance = usuario)
-        contexto = {
-            'form':form
-        }
-    else:
-        form = UsuarioForm(request.POST, instance = usuario)
-        contexto = {
-            'form':form
-        }
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-
-    return render(request,'crearUser.html',contexto)
-
-def  eliminarUser(reques,id):
-    usuario = Usuarios.objects.get(id = id)
-    usuario.delete()
-    return redirect('index')
-
-def turno(request):
-    turn = Turnos.objects.all()
+def turn(request):
+    turn = Turns.objects.all()
     contexto ={
         "turn": turn
     }
     return render(request, 'turno.html', contexto)
 
-def crearTurno(request):
+def createTurn(request):
     if request.method == 'GET':
-        form = TurnosForm()
+        form = TurnsForm()
         contexto = {
             'form':form
         }
     else:
-        form = TurnosForm(request.POST)
+        form = TurnsForm(request.POST)
         contexto = {
             'form':form
         }
@@ -72,15 +27,15 @@ def crearTurno(request):
             return redirect('turno')
     return render(request,'crearTurno.html',contexto)
 
-def editarTurno(request,id):
-    turn = Turnos.objects.get(id = id)
+def editTurn(request,id):
+    turn = Turns.objects.get(id = id)
     if request.method == 'GET':
-        form = TurnosForm(instance = turn)
+        form = TurnsForm(instance = turn)
         contexto = {
             'form':form
         }
     else:
-        form = TurnosForm(request.POST, instance = turn)
+        form = TurnsForm(request.POST, instance = turn)
         contexto = {
             'form':form
         }
@@ -90,7 +45,7 @@ def editarTurno(request,id):
 
     return render(request,'crearUser.html',contexto)
 
-def  eliminarTurno(reques,id):
-    turn = Turnos.objects.get(id = id)
+def  deleteTurn(reques,id):
+    turn = Turns.objects.get(id = id)
     turn.delete()
     return redirect('turno')

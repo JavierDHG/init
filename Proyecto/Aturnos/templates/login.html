@@ -1,25 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <title>Inicio de Sesión</title>
 </head>
-<body>
-    <a href="index.html"></a>
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label>Nombre de Usuario</label>
-            <input type="text" placeholder="Nombre de Usuario" name="username">
-        </div>
-       <div class="form-group">
-           <label>Contraseña</label>
-           <input type="password" placeholder="Nombre de Usuario" name="password">
-       </div>
-       <button type="submit">Iniciar Sesión</button>
-     
-    </form>
+<body class="bg">
+        <a href="index.html"></a>
+        <form method="post" class="login">
+            <h3 class="text-center">Inicio de sesión</h3>
+            {% csrf_token %}
+            <div class="form-group">
+                <label >Nombre de Usuario</label>
+                <input type="text" class="form-control" name="username" placeholder="Usuario">
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" name="password" placeholder="Contraseña">
+            </div>
+            <p class="text-center">
+                <button class="btn btn-primary btn-block" type="submit">Iniciar Sesión</button>  
+            </p>
+        </form>
 </body>
 </html>
