@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from .models import Turns
 from .forms import TurnsForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required
 def turn(request):
     turn = Turns.objects.all()
     contexto ={
@@ -11,6 +12,7 @@ def turn(request):
     }
     return render(request, 'turno.html', contexto)
 
+@login_required
 def createTurn(request):
     if request.method == 'GET':
         form = TurnsForm()
@@ -27,6 +29,7 @@ def createTurn(request):
             return redirect('turno')
     return render(request,'crearTurno.html',contexto)
 
+@login_required
 def editTurn(request,id):
     turn = Turns.objects.get(id = id)
     if request.method == 'GET':
@@ -45,6 +48,7 @@ def editTurn(request,id):
 
     return render(request,'crearUser.html',contexto)
 
+@login_required
 def  deleteTurn(reques,id):
     turn = Turns.objects.get(id = id)
     turn.delete()

@@ -1,5 +1,5 @@
 from distutils.command.upload import upload
-from django.contrib.auth.models import User
+from statistics import mode
 from django.db import models
 from pickle import TRUE
 

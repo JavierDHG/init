@@ -19,13 +19,14 @@ from django.conf import settings
 from django.contrib.auth.views import LoginView
 from django.conf.urls.static import static
 from apps.turnos.views import turn,createTurn,editTurn,deleteTurn
-from apps.Users.Profiles.views import data,createUser,editUser,deleteUser
+from apps.Users.Profiles.views import data,createUser,editUser,deleteUser,exit
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', LoginView.as_view(template_name='login.html'), name="login"),
-    path('turno/',turn,name='turno'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('exit/', exit, name='exit'),
     path('',data,name='index'),
+    path('turno/',turn,name='turno'),
     path('crearUser/',createUser,name='crear_user'),
     path('crearTurno/',createTurn,name='crear_turno'),
     path('editarUser/<int:id>/',editUser, name = 'editar_user'),
